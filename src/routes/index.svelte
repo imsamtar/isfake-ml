@@ -19,6 +19,7 @@
 		border-radius: 10px;
 		font-weight: bold;
 		cursor: pointer;
+		font-size: 2rem;
 	}
 	button:hover {
 		background: #1b1b1b;
@@ -45,7 +46,7 @@
 <svelte:head>
 	<title>Fake Person Generator</title>
 </svelte:head>
-<button on:click={fetchPerson}>New</button>
+<button on:click={fetchPerson}>🔄</button>
 <main>
 	{#if p}
 		<div>
