@@ -38,9 +38,6 @@
 		display: flex;
 		flex-flow: column;
 	}
-	.fc > span > b {
-		margin-right: 1rem;
-	}
 </style>
 
 <svelte:head>
