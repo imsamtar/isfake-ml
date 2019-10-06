@@ -1,7 +1,7 @@
 <script>
-	import Nav from '../components/Nav.svelte';
+	// import Nav from '../components/Nav.svelte';
 
-	export let segment;
+	// export let segment;
 </script>
 
 <style>
@@ -12,10 +12,15 @@
 		margin: 0 auto;
 		box-sizing: border-box;
 	}
+	h1 {
+		text-align: center;
+		font-weight: bold;
+	}
 </style>
 
-<Nav {segment}/>
+<!-- <Nav {segment}/> -->
 
 <main>
+	<h1>Fake Person Generator</h1>
 	<slot></slot>
 </main>

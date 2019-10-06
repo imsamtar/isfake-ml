@@ -54,6 +54,6 @@
 <nav>
 	<ul>
 		<li><a class='{segment === undefined ? "selected" : ""}' href='.'>Generate Fake ID</a></li>
-		<li><a class='{segment === "about" ? "selected" : ""}' href='about'>About</a></li>
+		<li><a target="_blank" href='https://github.com/imsamtar/isfake-ml'>Github</a></li>
 	</ul>
 </nav>
