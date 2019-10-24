@@ -1,11 +1,11 @@
 <script>
 	import { onMount } from 'svelte';
 	let p;
-	let spin = false;
+	let loading = false;
 	const fetchPerson = async () => {
-		spin = true;
+		loading = true;
 		p=(await fetch('https://randomuser.me/api/').then(r => r.json())).results[0];
-		spin = false;
+		loading = false;
 	};
 	onMount(fetchPerson);
 	$: img = () => p.picture.large;
@@ -43,7 +43,7 @@
 		display: flex;
 		flex-flow: column;
 	}
-	@keyframes example {
+	@keyframes spin {
 		0% {
 			transform: rotateZ(0);
 		}
@@ -51,8 +51,8 @@
 			transform: rotateZ(-360deg);
 		}
 	}
-	button > .spin {
-		animation-name: example;
+	button > .loading {
+		animation-name: spin;
 		animation-duration: 1s;
 		animation-iteration-count: infinite;
 	}
@@ -66,7 +66,7 @@
 <svelte:head>
 	<title>Fake Person Generator</title>
 </svelte:head>
-<button on:click={fetchPerson}><span class:spin>🔄</span></button>
+<button on:click={fetchPerson} disabled={loading}><span class:loading>🔄</span></button>
 <main>
 	{#if p}
 		<div>
