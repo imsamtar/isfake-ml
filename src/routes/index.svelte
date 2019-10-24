@@ -1,7 +1,12 @@
 <script>
 	import { onMount } from 'svelte';
 	let p;
-	const fetchPerson = async () => p=(await fetch('https://randomuser.me/api/').then(r => r.json())).results[0];
+	let spin = false;
+	const fetchPerson = async () => {
+		spin = true;
+		p=(await fetch('https://randomuser.me/api/').then(r => r.json())).results[0];
+		spin = false;
+	};
 	onMount(fetchPerson);
 	$: img = () => p.picture.large;
 </script>
@@ -38,12 +43,30 @@
 		display: flex;
 		flex-flow: column;
 	}
+	@keyframes example {
+		0% {
+			transform: rotateZ(0);
+		}
+		100% {
+			transform: rotateZ(-360deg);
+		}
+	}
+	button > .spin {
+		animation-name: example;
+		animation-duration: 1s;
+		animation-iteration-count: infinite;
+	}
+	button > span {
+		display: inline-block;
+		width: 45px;
+		height: 45px;
+	}
 </style>
 
 <svelte:head>
 	<title>Fake Person Generator</title>
 </svelte:head>
-<button on:click={fetchPerson}>🔄</button>
+<button on:click={fetchPerson}><span class:spin>🔄</span></button>
 <main>
 	{#if p}
 		<div>
